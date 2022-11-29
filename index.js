@@ -16,7 +16,7 @@ const comprarProducto = () => {
     nombreCliente = prompt('Hola, por favor ingresa tu nombre');
     while (nombreCliente !== null) {
         if (nombreCliente !== '') {
-            let seleccion = confirm('Bienvenido ' + nombreCliente?.toUpperCase() + ', ¿deseas comprar algún producto?');
+            let seleccion = confirm('¡BIENVENIDO ' + nombreCliente?.toUpperCase() + '!, ¿deseas comprar algún producto?, en caso contrario selecciona CANCELAR para salir');
 
             if (seleccion === true) {
                 seleccionarProducto();
@@ -42,7 +42,7 @@ const seleccionarProducto = () => {
             alert('Debe ingresar un producto');
             seleccionarProducto();
         }
-    } while (seleccionaProducto !== null || seleccionaProducto !== '');
+    } while (seleccionaProducto === '');
 }
 
 /* funcion agregar producto */
@@ -88,10 +88,9 @@ const agregaProducto = (seleccionaProducto) => {
     }
 
     let nuevaCompra = confirm('¿Desea realizar otra compra?');
-
     do {
         if (nuevaCompra === false) {
-            alert('Clickea en Aceptar para ver tus productos comprados');
+            alert('Selecciona ACEPTAR para ver tus productos comprados');
             carrito.forEach(compraFinal => {
                 alert(`${compraFinal.cantidadProductos} ${compraFinal.seleccionaProducto}, por un TOTAL de $${compraFinal.cantidadProductos * compraFinal.precioProducto} (valor unitario por producto: $${compraFinal.precioProducto})`);
             });
@@ -100,12 +99,11 @@ const agregaProducto = (seleccionaProducto) => {
             const cuotas = calculaCuotas();
             const intereses = calculaIntereses(cuotas);
             totalCompraFinal(totalCompra, cuotas, intereses);
-            alert('Gracias por tu compra, hasta pronto!!!');
-            comprarProducto();
+            alert(nombreCliente.toUpperCase() + ' muchas gracias por tu compra, te redirigiremos al inicio de la tienda por si deseas seguir comprando.');
         } else {
             seleccionarProducto();
         }
-    } while (nuevaCompra !== null);
+    } while (nuevaCompra !== false);
 }
 
 /* funcion calcula cuotas */
