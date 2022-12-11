@@ -36,7 +36,6 @@ const ordenaMayorMenor = () => {
 /* funcion seleccionar productos */
 const listaProductos = () => {
     finCompra = false;
-    carrito = [];
     const productosOrdenados = productos.map(producto => {
         return '- ' + producto.nombre + ' con un precio de $' + producto.precio
     });
@@ -157,6 +156,7 @@ finalizarCompra = () => {
     totalCompraFinal(totalCompra, cuotas, intereses);
     alert(`${nombreCliente.toUpperCase()} muchas gracias por tu compra \n\nSeras redirigido al inicio de la tienda por si deseas seguir comprando.`);
     finCompra = true;
+    carrito = [];
 }
 
 /* funcion calcula cuotas */
